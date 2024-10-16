@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import InboxSidebar from "@/components/inbox-sidebar"; // New component for the sidebar
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +29,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <fieldset className="border border-solid border-1 border-slate-700 p-4">
+          <legend>/app/layout.tsx</legend>
+          <div className="flex">
+            <InboxSidebar />
+            <div className="flex-1 flex">{children}</div>
+          </div>
+        </fieldset>
       </body>
     </html>
   );
